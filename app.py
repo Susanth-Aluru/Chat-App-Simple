@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify, send_file
 import os, time, hashlib, base64
 from collections import defaultdict
+import threading, urllib.request
 
 app = Flask(__name__)
 app.secret_key = "chatapp_secret_sus"
