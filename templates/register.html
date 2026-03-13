@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChatFlow — Create Account</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0a0a0f;
+    --surface: #111118;
+    --border: rgba(255,255,255,0.07);
+    --accent: #f59e0b;
+    --accent-dim: rgba(245,158,11,0.15);
+    --text: #e8e8f0;
+    --muted: #6b6b80;
+    --input-bg: #18181f;
+    --error: #ef4444;
+  }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    padding: 24px 16px;
+    justify-content: center;
+    overflow-y: auto;
+    position: relative;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    top: -200px; right: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(245,158,11,0.06) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 48px 40px;
+    width: 100%;
+    max-width: 400px;
+    animation: slideUp 0.5s cubic-bezier(0.16,1,0.3,1);
+  }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .logo { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 6px; }
+  .logo span { color: var(--accent); }
+  .subtitle { color: var(--muted); font-size: 13px; margin-bottom: 36px; }
+  .field { margin-bottom: 16px; }
+  label { display: block; font-size: 11px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  input[type="text"], input[type="password"] {
+    width: 100%; background: var(--input-bg); border: 1px solid var(--border);
+    border-radius: 10px; padding: 12px 16px; font-family: 'DM Sans', sans-serif;
+    font-size: 14px; color: var(--text); outline: none; transition: border-color 0.2s;
+  }
+  input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-dim); }
+  .btn {
+    width: 100%; background: var(--accent); color: #0a0a0f; border: none;
+    border-radius: 10px; padding: 13px; font-family: 'Syne', sans-serif;
+    font-size: 14px; font-weight: 700; letter-spacing: 0.5px; cursor: pointer;
+    margin-top: 8px; transition: opacity 0.2s, transform 0.15s;
+  }
+  .btn:hover { opacity: 0.9; transform: translateY(-1px); }
+  .error {
+    background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3);
+    border-radius: 8px; padding: 10px 14px; font-size: 13px; color: var(--error); margin-bottom: 16px;
+  }
+  .switch { text-align: center; margin-top: 24px; font-size: 13px; color: var(--muted); }
+  .switch a { color: var(--accent); text-decoration: none; font-weight: 500; }
+  .divider { height: 1px; background: var(--border); margin: 28px 0; }
+@media (max-width: 480px) {
+    body { padding: 16px; align-items: flex-start; padding-top: 40px; }
+    .card { padding: 32px 20px; border-radius: 16px; }
+    input[type="text"], input[type="password"] { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">Chat<span>Flow</span></div>
+    <div class="subtitle">Create your account to get started</div>
+
+    {% if error %}
+    <div class="error">{{ error }}</div>
+    {% endif %}
+
+    <form method="POST">
+      <div class="field">
+        <label>Username</label>
+        <input type="text" name="username" placeholder="pick_a_name" autocomplete="off" required>
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" name="password" placeholder="something secure" required>
+      </div>
+      <button type="submit" class="btn">Create Account →</button>
+    </form>
+
+    <div class="divider"></div>
+    <div class="switch">Already have one? <a href="/login">Sign in</a></div>
+  </div>
+</body>
+</html>
