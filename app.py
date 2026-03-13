@@ -229,5 +229,16 @@ def call_poll():
     call_signals[me] = []
     return jsonify(signals)
 
+
+def keep_alive():
+    while True:
+        try:
+            urllib.request.urlopen("https://your-app-name.onrender.com", timeout=10)
+        except:
+            pass
+        time.sleep(840)
+
+threading.Thread(target=keep_alive, daemon=True).start()
+# --- KEEP ALIVE END ---
 if __name__ == "__main__":
     app.run(debug=True, port=5000, host="0.0.0.0")
