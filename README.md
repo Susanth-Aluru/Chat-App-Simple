@@ -2,7 +2,7 @@
 
 A classy WhatsApp-style group chat app built with Python + Flask.
 No database — just text files. Perfect for demos!
-
+⚠️⚠️⚠️⚠️⚠️ Warning- THIS IS JUST A APP MADE FOR TESTING AND HAS MANY SECURITY ISSUES AND VULNERABILITIES< PLEASE DO NOT USE FOR PERSONAL STUFF ⚠️⚠️⚠️⚠️⚠️⚠️
 ## Setup & Run
 
 ```bash
